@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: aggregator-service-cronjob
+spec:
+  schedule: '0 * * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: aggregator-service-container
+              image: aggregator-service:latest
+              imagePullPolicy: IfNotPresent
+              resources:
+                requests:
+                  memory: '64Mi'
+                  cpu: '250m'
+                limits:
+                  memory: '128Mi'
+                  cpu: '500m'
+          restartPolicy: Always
