@@ -1,5 +1,5 @@
 
-FROM python:3.9-slim
+FROM python:3.10-alpine
 RUN pip install poetry
 WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
